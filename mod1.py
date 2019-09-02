@@ -37,10 +37,7 @@ test_world = [
   ['*', '*', '*', '*', '*', '*', '.'],
   ['*', '*', '*', '*', '*', '*', '.']]
 
-#Defining the costs to move to certain spaces within the world
 costs = { '.': 1, '*': 3, '#': 5, '~': 7}
-
-#Defining the cardinal directions the agent can move
 cardinal_moves = [(0,-1), (1,0), (0,1), (-1,0)]
 
 def find_path_cost(world, position, start, costs, predecessors):
