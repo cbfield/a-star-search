@@ -62,6 +62,10 @@ def move_is_valid(position, world, move):
     
     return within_x_bounds and within_y_bounds and world[position[1] + move[1]][position[0] + move[0]] != 'x'
 
+def heuristic(pos, goal_pos):
+    manhattan_distance = abs(goal_pos[1] - pos[1]) + abs(goal_pos[0] - pos[0])
+    return manhattan_distance
+
 def a_star_search( world, start, goal, costs, moves, heuristic):
     
     frontier = PriorityQueue()
@@ -84,7 +88,6 @@ def a_star_search( world, start, goal, costs, moves, heuristic):
 def pretty_print_solution( world, path, start):
     
     pretty_world = world
-    
     move_arrows = {(0,-1):"^", (1,0):">", (0,1):"v", (-1,0):"<"}
     
     current_pos = start
@@ -100,9 +103,7 @@ def pretty_print_solution( world, path, start):
     
     return None
 
-def heuristic(pos, goal_pos):
-    manhattan_distance = abs(goal_pos[1] - pos[1]) + abs(goal_pos[0] - pos[0])
-    return manhattan_distance
+
 
 test_path = a_star_search( test_world, (0, 0), (6, 6), costs, cardinal_moves, heuristic)
 print( test_path)
